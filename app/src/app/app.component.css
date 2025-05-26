@@ -1,0 +1,85 @@
+body {
+  background-color: #121212;
+  color: #f1c40f;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
+}
+
+.title {
+  text-align: center;
+  color: #f1c40f;
+}
+
+.movie-card {
+  background-color: #1e1e1e;
+  border: 1px solid #f1c40f33;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+  box-shadow: 0 0 10px rgba(241, 196, 15, 0.2);
+}
+
+.i18n-title {
+  color: #f1c40f;
+  margin: 0 0 0.5rem;
+}
+
+.original-title,
+.cast,
+.summary,
+.launch-date {
+  color: #dcdcdc;
+  margin: 1rem 0;
+}
+
+.summary {
+  text-align: justify;
+}
+
+.youtube-frame {
+  margin-top: 1rem;
+}
+
+.page-header {
+  background-color: #1c1c1c;
+  border-left: 4px solid #f1c40f;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(241, 196, 15, 0.1);
+}
+
+.page-header p {
+  margin: 0;
+  color: #f1c40f;
+  font-size: 1rem;
+}
+
+.page-header a {
+  color: #f39c12;
+  text-decoration: underline;
+}
+
+.page-header a:hover {
+  color: #f1c40f;
+  text-decoration: none;
+}
+
+.page-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #1c1c1c;
+  border-left: 4px solid #f1c40f;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}

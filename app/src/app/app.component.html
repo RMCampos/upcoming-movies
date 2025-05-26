@@ -1,0 +1,27 @@
+<div class="page-header">
+  <p>
+    Mostrando filmes para {{ today | date:'longDate' }}.
+    Acesse o <a href="https://gnccinemas.com.br" target="_blank" rel="noopener">GCN Cinemas aqui</a>.
+  </p>
+</div>
+
+<div class="container">
+  <h1 class="title">Filmes em breve</h1>
+  <div *ngFor="let movie of movies" class="movie-card">
+    <h2 class="i18n-title">{{ movie.i18nTitle }}</h2>
+    <h3 class="original-title">Título original: {{ movie.originalTitle }}</h3>
+    <p class="summary">Resumo: {{ movie.summary }}</p>
+    <p class="cast">Elenco: {{ movie.cast.join(', ') }}</p>
+    <p class="cast">Diretor(es): {{ movie.directors.join(', ') }}</p>
+    <p class="launch-date">{{ movie.launchDate }}</p>
+    <div class="youtube-frame">
+      <iframe
+        width="100%"
+        height="315"
+        [src]="movie.youtubePreviewUrl | safeUrl"
+        frameborder="0"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </div>
+</div>
