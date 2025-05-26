@@ -1,0 +1,19 @@
+---
+
+services:
+  server:
+    container_name: api
+    ports:
+      - "8080:8080"
+      - "5005:5005"
+    image: maven:3.9.9-eclipse-temurin-17
+    entrypoint: './mvnw -ntp spring-boot:run -Dspring-boot.run.jvmArguments="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=*:5005" -Dmaven.plugin.validation=VERBOSE'
+    working_dir: /app
+    volumes:
+      - ".:/app"
+    healthcheck:
+      test: curl -f http://localhost:8585/actuator/health | grep '"status":"UP"'
+      interval: 1m30s
+      timeout: 15s
+      retries: 3
+      start_period: 10s
