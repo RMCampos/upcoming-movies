@@ -3,6 +3,8 @@
 services:
   api:
     container_name: api
+    environment:
+      CORS_ALLOWED_ORIGINS: http://localhost:4200
     ports:
       - "8080:8080"
       - "5005:5005"

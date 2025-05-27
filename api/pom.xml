@@ -8,11 +8,11 @@
 		<version>3.4.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>demo</artifactId>
+	<groupId>br.dev.ricardocampos</groupId>
+	<artifactId>upcoming-movies-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demo</name>
-	<description>Demo project for Spring Boot</description>
+	<name>upcoming-movies-api</name>
+	<description>Simple REST API to fetch movies from GCN</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -28,6 +28,10 @@
 	</scm>
 	<properties>
 		<java.version>17</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<timestamp>${maven.build.timestamp}</timestamp>
+		<maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -51,6 +55,32 @@
 			<version>1.20.1</version>
 	</dependency>
 	</dependencies>
+
+	<profiles>
+		<profile>
+			<id>native</id>
+			<properties>
+				<build.profile.id>native</build.profile.id>
+			</properties>
+			<build>
+        <plugins>
+          <plugin>
+            <groupId>org.graalvm.buildtools</groupId>
+            <artifactId>native-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>build-native</id>
+                <goals>
+                  <goal>compile-no-fork</goal>
+                </goals>
+                <phase>package</phase>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+		</profile>
+	</profiles>
 
 	<build>
 		<plugins>
@@ -79,6 +109,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>upcoming-movies-api</finalName>
 	</build>
 
 </project>

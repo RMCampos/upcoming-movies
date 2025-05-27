@@ -1,4 +1,4 @@
-package com.example.demo;
+package br.dev.ricardocampos;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -159,7 +159,7 @@ public class MoviesServices {
             String castAndDirector = "";
             if (castIndex > -1) {
               closingP = entireText.indexOf("</", castIndex); // \n</p>
-              castAndDirector = entireText.substring(castIndex + 7, closingP-6).trim();
+              castAndDirector = entireText.substring(castIndex + 7, closingP - 6).trim();
               log.info("castAndDirector={}", castAndDirector);
 
               if (castAndDirector.contains("|")) {
