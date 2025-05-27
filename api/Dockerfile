@@ -10,7 +10,6 @@ COPY .mvn/ ./.mvn
 # Build
 RUN ./mvnw -B package -Pnative -DskipTests
 
-
 ### Deployer
 FROM debian:12.10-slim AS deploy
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -25,7 +24,7 @@ COPY --from=build /app/target/upcoming-movies-api ./upcoming-movies-api
 # User, port and health check
 USER 1001
 EXPOSE ${PORT}
-HEALTHCHECK --interval=30s --timeout=5s CMD ["curl", "-f", "http://localhost:8585/actuator/health"]
+HEALTHCHECK --interval=30s --timeout=5s CMD ["curl", "-f", "http://localhost:8080/actuator/health"]
 
 # Startup
 ENTRYPOINT ["/app/upcoming-movies-api", "-Dspring.profiles.active=prod"]

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { SafeUrlPipe } from './safe-url.pipe';
+import { environment } from '../environments/environment';
 
 interface Movie {
   i18nTitle: string;
@@ -22,11 +23,12 @@ interface Movie {
 export class AppComponent implements OnInit {
   movies: Movie[] = [];
   today = new Date();
+  private apiUrl: string = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.http.get<Movie[]>('http://localhost:8080/api/upcoming-movies').subscribe(data => {
+    this.http.get<Movie[]>(`${this.apiUrl}/api/upcoming-movies`).subscribe(data => {
       this.movies = data;
     });
   }
