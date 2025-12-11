@@ -44,7 +44,6 @@ jobs:
           images: ${{ secrets.DOCKER_USERNAME }}/upcoming-movies
           tags: |
             type=raw,value=${{ steps.version.outputs.tag }}
-            type=sha,prefix={{branch}}-
             type=raw,value=api-latest,enable={{is_default_branch}}
 
       - name: Build and push Docker image
