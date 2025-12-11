@@ -31,8 +31,8 @@ jobs:
       - name: Generate version tag
         id: version
         run: |
-          DATE=$(date +'%Y-%m-%d-%H%M%S')
-          TAG="v${DATE}.${{ github.run_number }}"
+          DATE=$(date +'%Y.%m.%d')
+          TAG="app-v${DATE}.${{ github.run_number }}"
           echo "tag=${TAG}" >> $GITHUB_OUTPUT
           echo "Generated tag: ${TAG}"
 
@@ -49,7 +49,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ secrets.DOCKER_USERNAME }}/upcoming-movies/app
+          images: ${{ secrets.DOCKER_USERNAME }}/upcoming-movies
           tags: |
             type=raw,value=${{ steps.version.outputs.tag }}
             type=sha,prefix={{branch}}-
