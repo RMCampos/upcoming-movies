@@ -4,7 +4,6 @@ import java.util.Arrays;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.lang.NonNull;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -21,7 +20,7 @@ public class CorsConfig implements WebMvcConfigurer {
    *
    * @param registry CorsRegistry instance.
    */
-  public void addCorsMappings(@NonNull CorsRegistry registry) {
+  public void addCorsMappings(CorsRegistry registry) {
     if (allowedOrigins != null && allowedOrigins.length > 0) {
 
       log.info("CORS policy allowed origins: {}", Arrays.asList(allowedOrigins));
